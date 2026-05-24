@@ -1,0 +1,47 @@
+{
+  "description": "Mock BCF Configuration for DID Mutual Authentication Testing",
+  "dids": [
+    {
+      "did": "did:oai5gc:amf001",
+      "publicKey": "02a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+      "nfType": "AMF",
+      "nfInstanceId": "amf-instance-001",
+      "endpoint": "http://oai-amf:8080"
+    },
+    {
+      "did": "did:oai5gc:smf001",
+      "publicKey": "03b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3",
+      "nfType": "SMF",
+      "nfInstanceId": "smf-instance-001",
+      "endpoint": "http://oai-smf:8080"
+    },
+    {
+      "did": "did:oai5gc:upf001",
+      "publicKey": "02c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+      "nfType": "UPF",
+      "nfInstanceId": "upf-instance-001",
+      "endpoint": "http://oai-upf:8080"
+    },
+    {
+      "did": "did:oai5gc:nrf001",
+      "publicKey": "03d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5",
+      "nfType": "NRF",
+      "nfInstanceId": "nrf-instance-001",
+      "endpoint": "http://oai-nrf:8080"
+    },
+    {
+      "did": "did:oai5gc:ausf001",
+      "publicKey": "02e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6",
+      "nfType": "AUSF",
+      "nfInstanceId": "ausf-instance-001",
+      "endpoint": "http://oai-ausf:8080"
+    },
+    {
+      "did": "did:oai5gc:udm001",
+      "publicKey": "03f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1",
+      "nfType": "UDM",
+      "nfInstanceId": "udm-instance-001",
+      "endpoint": "http://oai-udm:8080"
+    }
+  ]
+}

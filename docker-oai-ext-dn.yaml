@@ -1,0 +1,33 @@
+services:
+    oai-ext-dn:
+        privileged: true
+        init: true
+        container_name: "oai-ext-dn"
+        image: oaisoftwarealliance/trf-gen-cn5g:latest
+        entrypoint: /bin/bash -c \
+              "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; \
+               ip route add 12.1.1.0/24 via 192.168.73.1 dev eth0; \
+               ip route add 12.1.2.0/24 via 192.168.73.1 dev eth0; \
+               ip route; \
+               sleep infinity"
+        # command 确保容器在接收到停止信号时能优雅退出
+        command: ["/bin/bash", "-c", "trap : SIGTERM SIGINT; sleep infinity & wait"]
+        healthcheck:
+            test: /bin/bash -c "iptables -L -t nat | grep MASQUERADE"
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        networks:
+            public_net_core:
+                ipv4_address: 192.168.73.135
+
+networks:
+    public_net_core:
+        name: oai-public-core
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 192.168.73.0/24
+        driver_opts:
+            # 这里的 bridge 名字会自动创建在你的宿主机上（即你之前 ifconfig 看到的）
+            com.docker.network.bridge.name: "cn5g-core"

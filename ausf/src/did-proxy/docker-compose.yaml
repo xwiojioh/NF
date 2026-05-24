@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  did-proxy:
+    container_name: "oai-ausf-did-proxy"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: oai-ausf-did-proxy:v1.0.0
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - ./etc/config.yaml:/usr/local/etc/oai/config.yaml:ro
+      - did-proxy-keys:/usr/local/etc/oai/keys
+    networks:
+      - oai-5gc-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8090/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    depends_on:
+      - oai-ausf
+
+  # BCF (Blockchain Function) - Placeholder service
+  # Replace with actual BCF implementation
+  oai-bcf:
+    container_name: "oai-bcf"
+    image: nginx:alpine
+    networks:
+      - oai-5gc-net
+    ports:
+      - "8089:80"
+    # This is a placeholder - replace with actual BCF service
+
+volumes:
+  did-proxy-keys:
+    driver: local
+
+networks:
+  oai-5gc-net:
+    external: true
+    name: oai-5gc-net

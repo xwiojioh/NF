@@ -1,0 +1,11 @@
+init 
+sleep 
+state 
+sleep 
+sleeplong
+viewNet 
+sleep 
+construct 
+sleeplong 
+start 
+sleep 

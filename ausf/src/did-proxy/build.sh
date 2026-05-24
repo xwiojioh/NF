@@ -1,0 +1,73 @@
+#!/bin/bash
+################################################################################
+# Licensed to the OpenAirInterface (OAI) Software Alliance under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The OpenAirInterface Software Alliance licenses this file to You under
+# the OAI Public License, Version 1.1  (the "License"); you may not use this file
+# except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.openairinterface.org/?page_id=698
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#-------------------------------------------------------------------------------
+# For more information about the OpenAirInterface (OAI) Software Alliance:
+#      contact@openairinterface.org
+################################################################################
+
+# Build script for DID Proxy Service (AUSF)
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BUILD_DIR="${SCRIPT_DIR}/../build"
+OUTPUT_DIR="${BUILD_DIR}/did-proxy"
+
+echo "============================================"
+echo "Building DID Proxy Service (AUSF)"
+echo "============================================"
+
+# Create output directory
+mkdir -p "${OUTPUT_DIR}"
+
+# Navigate to source directory
+cd "${SCRIPT_DIR}"
+
+# Download dependencies
+echo "Downloading Go dependencies..."
+go mod tidy
+
+# Build for current platform
+echo "Building for current platform..."
+go build -o "${OUTPUT_DIR}/did-proxy" .
+
+# Also create a symlink in the source directory for convenience
+# This allows running ./did-proxy from src/did-proxy/ directory
+if [[ -f "${OUTPUT_DIR}/did-proxy" ]]; then
+    ln -sf "${OUTPUT_DIR}/did-proxy" "${SCRIPT_DIR}/did-proxy"
+    echo "Created symlink: ${SCRIPT_DIR}/did-proxy -> ${OUTPUT_DIR}/did-proxy"
+fi
+
+# Build for Linux (if cross-compiling)
+if [[ "$(uname)" != "Linux" ]]; then
+    echo "Cross-compiling for Linux..."
+    GOOS=linux GOARCH=amd64 go build -o "${OUTPUT_DIR}/did-proxy-linux-amd64" .
+fi
+
+echo "============================================"
+echo "Build completed successfully!"
+echo "Output: ${OUTPUT_DIR}/did-proxy"
+echo "Symlink: ${SCRIPT_DIR}/did-proxy"
+echo "============================================"
+
+# Display usage
+echo ""
+echo "Usage:"
+echo "  ./did-proxy -config /usr/local/etc/oai/config.yaml -keypath /usr/local/etc/oai/keys"
+echo "  or"
+echo "  ${OUTPUT_DIR}/did-proxy -config /usr/local/etc/oai/config.yaml -keypath /usr/local/etc/oai/keys"

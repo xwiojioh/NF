@@ -1,0 +1,36 @@
+{
+  "amfInfo": {
+    "amfRegionId": "11",
+    "amfSetId": "001",
+    "guamiList": [
+      {"amfId": "1100100", "plmnId": {"mcc": "208", "mnc": "95"}},
+      {"amfId": "1000101", "plmnId": {"mcc": "460", "mnc": "000"}}
+    ]
+  },
+  "capacity": 30,
+  "did": "did:oai5gc:6fc0c8b9ab5d45166b16885eba8c8fa4d8f6b69f7e9693c9605cb9e453c2dcaa523b4cecf856ee37add7461052622463fd58fd91ca0874134b916d04b54fc44c00",
+  "didDocument": {
+    "@context": ["https://www.w3.org/ns/did/v1", "https://w3id.org/security/suites/secp256k1-2019/v1"],
+    "assertionMethod": ["did:oai5gc:6fc0c8b9ab5d45166b16885eba8c8fa4d8f6b69f7e9693c9605cb9e453c2dcaa523b4cecf856ee37add7461052622463fd58fd91ca0874134b916d04b54fc44c00#key-1"],
+    "authentication": ["did:oai5gc:6fc0c8b9ab5d45166b16885eba8c8fa4d8f6b69f7e9693c9605cb9e453c2dcaa523b4cecf856ee37add7461052622463fd58fd91ca0874134b916d04b54fc44c00#key-1"],
+    "controller": "did:oai5gc:6fc0c8b9ab5d45166b16885eba8c8fa4d8f6b69f7e9693c9605cb9e453c2dcaa523b4cecf856ee37add7461052622463fd58fd91ca0874134b916d04b54fc44c00",
+    "created": "2026-01-14T07:22:08Z",
+    "id": "did:oai5gc:6fc0c8b9ab5d45166b16885eba8c8fa4d8f6b69f7e9693c9605cb9e453c2dcaa523b4cecf856ee37add7461052622463fd58fd91ca0874134b916d04b54fc44c00",
+    "updated": "2026-01-14T07:22:08Z",
+    "verificationMethod": [{
+      "controller": "did:oai5gc:6fc0c8b9ab5d45166b16885eba8c8fa4d8f6b69f7e9693c9605cb9e453c2dcaa523b4cecf856ee37add7461052622463fd58fd91ca0874134b916d04b54fc44c00",
+      "id": "did:oai5gc:6fc0c8b9ab5d45166b16885eba8c8fa4d8f6b69f7e9693c9605cb9e453c2dcaa523b4cecf856ee37add7461052622463fd58fd91ca0874134b916d04b54fc44c00#key-1",
+      "publicKeyMultibase": "z23umGK7VjDarkfNZiEJX8n5ZsnGpGryjibtBJm27NNBoh",
+      "type": "EcdsaSecp256k1VerificationKey2019"
+    }]
+  },
+  "heartBeatTimer": 50,
+  "nfInstanceId": "b38c1bda-01f9-42b7-a3f0-21c71d3e6370",
+  "nfStatus": "REGISTERED",
+  "nfType": "AMF",
+  "perPlmnSnssaiList": [{"plmnId": {"mcc": "208", "mnc": "95"}, "sNssaiList": [{"sst": 1}, {"sst": 2}]}],
+  "plmnList": [{"mcc": "208", "mnc": "95"}],
+  "priority": 1,
+  "recoveryTime": "2026-01-14T07:22:08Z",
+  "sNssais": [{"sst": 1}, {"sst": 2}]
+}

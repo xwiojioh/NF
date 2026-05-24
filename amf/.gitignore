@@ -1,0 +1,34 @@
+# CMake build artifacts in build/
+# Keep: build/.gitignore, build/amf/.gitignore, build/amf/CMakeLists.txt,
+#       build/common-build (submodule), build/scripts/
+build/CMakeCache.txt
+build/CMakeFiles/
+build/.cmake/
+build/amf/CMakeCache.txt
+build/amf/CMakeFiles/
+build/amf/Makefile
+build/amf/cmake_install.cmake
+build/amf/amf-app/
+build/amf/common/
+build/amf/contexts/
+build/amf/nas/
+build/amf/ngap/
+build/amf/sbi/
+build/amf/sctp/
+build/amf/secu_algorithms/
+build/amf/utils/
+build/amf/build/
+build/log/
+build/ext/
+tags
+*.log
+archives/
+*.html
+*.swp
+.vscode
+
+amf.conf.dev
+amf.entrypoint.sh
+
+# Packet Capture
+*.pcap

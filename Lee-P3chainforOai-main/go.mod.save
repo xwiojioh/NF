@@ -1,0 +1,6 @@
+ module github.com/SuperGaric/Unique-Decentralized-Identifiers-Experiments/Local_LargeScale_Experiment/Lee-P3chainforOai-main
+
+  go 1.20
+
+  replace p3Chain => ./
+
